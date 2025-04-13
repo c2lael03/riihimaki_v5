@@ -8,14 +8,14 @@ import { Image } from "react-native";
 
 const Home = () => {
   const authState = useAuth();
-    const [imageSource, setImageSource] = useState(require('../../assets/images/bg2.png'));
+    const [imageSource, setImageSource] = useState(require('../../assets/images/tehostekuva1.jpg'));
 
     useEffect(() => {
       const random = Math.random();
       if (random < 0.6) {
-        setImageSource(require('../../assets/images/bg2.png'));
+        setImageSource(require('../../assets/images/tehostekuva2.jpg'));
       } else {
-        setImageSource(require('../../assets/images/bg3.png'));
+        setImageSource(require('../../assets/images/tehostekuva3.jpg'));
       }
     }, []);
 

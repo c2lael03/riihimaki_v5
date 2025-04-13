@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Image, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
 import globalStyles from '../assets/styles/Styles';
-import logo from '../assets/images/kierttisTitle.png';
+import logo from '../assets/images/personchecked200.png';
 import { AuthenticationContext } from "../context/AuthenticationContext";
 
 const CustomBottomBar = () => {

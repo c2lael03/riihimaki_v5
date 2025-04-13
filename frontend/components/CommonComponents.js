@@ -1,3 +1,5 @@
+// ./frontend/components/CommonComponents.js
+
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import globalStyles from '../assets/styles/Styles'; 
@@ -5,7 +7,8 @@ import globalStyles from '../assets/styles/Styles';
 export const Heading = ({ 
   title, 
   fontSize = 24, 
-  backgroundColor = '#113859', 
+  //backgroundColor = '#113859', 
+  backgroundColor = '#556B2F', // Tai '#556B2F', 'darkolivegreen'
   textColor = '#C9FFD9',
   onPress,
   style

@@ -1,3 +1,5 @@
+// ./frontend/assets/styles/Styles.js
+
 import { pad } from "lodash";
 import { StyleSheet } from "react-native";
 
@@ -163,12 +165,14 @@ const globalStyles = StyleSheet.create({
   },
 
   appBar: {
-    backgroundColor: "#0f3e5b",
+    //backgroundColor: "#0f3e5b",
+    backgroundColor: 'darkolivegreen',
     height: 98,
   },
 
   appBarAuthUndef: {
-    backgroundColor: "#0f3e5b",
+    //backgroundColor: "#0f3e5b",
+    backgroundColor: 'darkolivegreen',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',   

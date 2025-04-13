@@ -1,3 +1,5 @@
+// ./frontend/components/CustomTopBar.js
+
 import React, { useState, useContext } from 'react';
 import { Appbar, Menu } from 'react-native-paper';
 import { Image } from 'react-native';
@@ -48,7 +50,7 @@ const CustomTopBar = () => {
           </Menu>
 
           <Appbar.Content
-            title="Kierttis"
+            title="IDIS"
             titleStyle={globalStyles.appBarTitle}
             style={globalStyles.appBarContainer}
           />
