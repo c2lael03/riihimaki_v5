@@ -27,16 +27,14 @@ const Credits = () => {
         {"\n\n"}
         
         Kirjautunut käyttäjä voi tehdä ilmoituksen, joka tallentuu tietokantaan. Näin palvelun 
-        rekisteröityneille käyttäjille saadaan päivitettyä tiedot joukon mukana esimerkiksi 
-        maahansaapuneista henkilöistä ja ajoneuvoista.
+        rekisteröityneet käyttäjät saavat tarkistettua tietokannasta löytyvien henkilöiden ajantasaiset
+        päivitetyt tiedot. Ilmoitus voidaan tehdä esimerkiksi skannatusta henkilöstä tämän 
+        saapumisajankohda- ja saapumispaikan osalta. Samoin mikäli joku henkilö puuttuu listoilta, voidaan
+        tietokantaan lisätä myös kokonaan uusi henkilö ja tälle tarvittavat henkilötiedot, kuten ID-numero,
+        nimi, syntymäaika, sotilasarvo, joukko sekä kansalaisuus, maahantulotietojen lisäksi.
         {"\n\n"}
         
         Ilmoituksessa annetaan tiedot tuotteesta, sen sijainti ja mahdollinen kuva tuotteesta. {"\n"}
-        Listautumiset julkaisuihin asettavat käyttäjän jonoon tuotteen saamiseksi. Ensimmäisellä sijalla oleva käyttäjä on noutovuorossa ja saa viestiyhteyden ilmoittajaan sopiakseen noudosta. {"\n\n"}
-        Varaus on voimassa 6h. Mikäli ilmoittaja ei ole varauksen voimassaoloaikana merkinnyt tuotetta luovutetuksi, siirtyy noutovuoro se seuraavalle käyttäjälle jonossa. {"\n\n"}
-        
-        Ilmoitukset vanhenevat automaattisesti viikon kuluttua julkaisusta ja poistetaan palvelusta. {"\n"}
-        Käyttäjä voi tarvittaessa julkaista ilmoituksensa uudelleen, mutta hänen tulee antaa tuotetiedot uudelleen. {"\n\n"}
       </BasicSection>
 
       <Heading title="Sovelluksen tausta" />
