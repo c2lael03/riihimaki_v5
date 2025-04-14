@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
     backgroundColor: "#f4f4f4",
+    
   },
   title: {
     marginBottom: 20,

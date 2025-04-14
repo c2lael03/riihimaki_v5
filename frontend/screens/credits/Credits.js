@@ -1,12 +1,14 @@
 // ./frontend/screens/credits/Credits.js
 
 import React, { } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Heading, BasicSection } from '../../components/CommonComponents';
+import globalStyles from '../../assets/styles/Styles';
 
 const Credits = () => {
 
   return (
+    <View style={globalStyles.homeScreenContainer}> 
     <ScrollView contentContainerStyle={{ padding: 8 }}>
       <Heading title="Mikä on IDIS?" />
 
@@ -54,6 +56,7 @@ const Credits = () => {
       </BasicSection>
 
     </ScrollView>
+    </View>
   );
 };
 

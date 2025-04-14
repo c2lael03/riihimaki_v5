@@ -1,3 +1,4 @@
+// ./frontend/screens/items/ScannerView.js
 // ./frontend/screens/items/UserQueues.js
 
 import { useNavigation } from "@react-navigation/native";
@@ -15,7 +16,6 @@ export const UserQueues = () => {
   const { queues, takersError, takersLoading } = useUserData();
 
   return (
-    <View style={globalStyles.homeScreenContainer}>
     <ScrollView contentContainerStyle={{ padding: 8 }}>
       <Heading title="Skannaa ID-numero" />
       <TouchableOpacity
@@ -44,7 +44,6 @@ export const UserQueues = () => {
         </Text>
       </View>
     </ScrollView>
-    </View>
   );
 };
 

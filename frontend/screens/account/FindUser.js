@@ -1,3 +1,5 @@
+// ./frontend/screens/account/FindUser.js
+
 import React, { useState, useContext } from "react";
 import { auth } from "../../services/firebaseConfig";
 import { Alert, View } from "react-native";

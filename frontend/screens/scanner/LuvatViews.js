@@ -1,4 +1,5 @@
-// ./frontend/screens/items/UserItemsView.js
+// ./frontend/screens/scanner/LuvatView.js
+// koodi kopioitu täältä: ./frontend/screens/items/UserItemsView.js
 
 import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
@@ -68,7 +69,7 @@ export const UserItemsView = () => {
       {userItemsError ? (
         <Toast
           type="error"
-          text1="Virhe skannatun henkilön maahantulolupien hakemisessa"
+          text1="Virhe omien julkaisujen hakemisessa"
           text2={userItemsError.message}
         />
       ) : (
@@ -89,7 +90,7 @@ export const UserItemsView = () => {
               />
             ))
           ) : (
-            <Text>Maahantulo- ja vierailulupia ei löytynyt.</Text>
+            <Text>Julkaisuja ei löytynyt.</Text>
           )}
         </View>
       )}

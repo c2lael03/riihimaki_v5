@@ -2,11 +2,11 @@
 
 import { create } from "zustand";
 import {
-  addItemToFirestore,
-  deleteItemFromFirestore,
+  addPaxToFirestore,
+  deletePaxFromFirestore,
   fetchQueueCount,
-  paginateItems,
-} from "../services/firestoreItems";
+  paginatePax,
+} from "../services/firestoreItems"; // tee samanlainen tiedosto kuin firestoreItems
 import {
   addTakerToItem,
   createTaker,
@@ -127,4 +127,4 @@ const useItemStore = create((set, get) => {
   };
 });
 
-export default useItemStore;
+export default usePaxStore;

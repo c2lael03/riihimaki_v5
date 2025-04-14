@@ -72,17 +72,17 @@ const ScannerMain = () => {
             <View style={globalStyles.viewIcons}>
                 <View style={globalStyles.iconWithText}>
                     <IconNewDocument onPress={() => navigation.navigate("AddItemView")} />
-                    <Text style={globalStyles.textWithIcon}>Uusi julkaisu</Text>
+                    <Text style={globalStyles.textWithIcon}>Uusi henkilö</Text>
                 </View>
 
                 <View style={globalStyles.iconWithText}>
                     <IconMyItemList onPress={() => navigation.navigate("MyItems")} />
-                    <Text style={globalStyles.textWithIcon}>Ilmoitukset</Text>
+                    <Text style={globalStyles.textWithIcon}>Luvat</Text>
                 </View>
 
                 <View style={globalStyles.iconWithText}>
                     <IconMyQueueList onPress={() => navigation.navigate("MyQueues")} />
-                    <Text style={globalStyles.textWithIcon}>Varaukset</Text>
+                    <Text style={globalStyles.textWithIcon}>Skannaa</Text>
                 </View>
             </View>
         </ScrollView>

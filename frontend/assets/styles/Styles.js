@@ -148,6 +148,7 @@ const globalStyles = StyleSheet.create({
     marginVertical: 4,
     paddingLeft: 8,
     paddingRight: 8,
+    backgroundColor: '#ccc', // Oletusväri, muutetaan TextInput-komponentissa
   },
 
   textDescription: {

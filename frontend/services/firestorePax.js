@@ -1,4 +1,4 @@
-// ./frontend/services/firestoreItems.js
+// ./frontend/services/firestorePax.js
 
 import {
     collection,
@@ -22,9 +22,9 @@ import { Timestamp } from 'firebase/firestore';
 import regionsAndCities from '../components/Sorted-maakunnat.json';
 import { getUserData } from './firestoreUsers';
 
-    export const addItemToFirestore = async (uid, itemname, itemdescription, city, imageUrl, image ) => {
+    export const addPaxToFirestore = async (uid, paxname, paxdescription, city, imageUrl, image ) => {
 
-        if (!itemname || !itemdescription || !city || !imageUrl) {
+        if (!paxname || !paxdescription || !city || !imageUrl) {
             console.error('Virhe: Yksi tai useampi kenttä on tyhjä!');
             throw new Error('Täytä puuttuvat kentät.');
         }
@@ -49,9 +49,9 @@ import { getUserData } from './firestoreUsers';
            // for testing: 2 minutes
            //const expiresInOneWeek = new Timestamp(now.seconds + 2 * 60, now.nanoseconds);
 
-            const itemData = {
-            itemname,
-            itemdescription,
+            const paxData = {
+            paxname,
+            paxdescription,
             imageUrl,
             image,
             city,
@@ -61,10 +61,10 @@ import { getUserData } from './firestoreUsers';
             expiration: expiresInOneWeek,
             };
 
-            const docRef = await addDoc(collection(firestore, 'items'), itemData);
+            const docRef = await addDoc(collection(firestore, 'pax'), paxData);
             console.log(`UID: ${uid} lisännyt:`, docRef.id);
 
-            const takersRef = collection(firestore, `items/${docRef.id}/takers`);
+            const takersRef = collection(firestore, `pax/${docRef.id}/takers`);
             await addDoc(takersRef, { placeholder: true });
             console.log(`Lisätty alikokoelma (takers) tuotteelle ${docRef.id}`);
 
@@ -75,39 +75,39 @@ import { getUserData } from './firestoreUsers';
         }
     };
 
-    export const getItemsFromFirestore = async () => {
+    export const getPaxFromFirestore = async () => {
         try {
-            const itemsRef = collection(firestore, 'items');
-            const itemsSnapshot = await getDocs(itemsRef);
-            const items = [];
+            const paxRef = collection(firestore, 'pax');
+            const paxSnapshot = await getDocs(paxRef);
+            const pax = [];
 
-            itemsSnapshot.forEach((doc) => {
-            items.push({ id: doc.id, ...doc.data() });
+            paxSnapshot.forEach((doc) => {
+            pax.push({ id: doc.id, ...doc.data() });
             });
 
-            return items;
+            return pax;
         } catch (error) {
             console.error('Virhe haettaessa tuotteita:', error);
             throw error;
         }
     };
 
-    export const paginateItems = async (
+    export const paginatePax = async (
         lastDoc,
         pageSize,
         filter = undefined,
         city = undefined,
-        refToCollection = () => collection(firestore, 'items'),
-        idFieldHandler = (item) => item.id
+        refToCollection = () => collection(firestore, 'pax'),
+        idFieldHandler = (pax) => pax.id
     ) => {
         try {
-            let itemsRef = refToCollection();
+            let paxRef = refToCollection();
             let q;
 
             if (lastDoc) {
-                q = query(itemsRef, orderBy('createdAt'), startAfter(lastDoc), limit(pageSize));
+                q = query(paxRef, orderBy('createdAt'), startAfter(lastDoc), limit(pageSize));
             } else {
-                q = query(itemsRef, orderBy('createdAt'), limit(pageSize));
+                q = query(paxRef, orderBy('createdAt'), limit(pageSize));
             }
             if (city) {
                 q = query(q, where('city', '==', city));
@@ -117,36 +117,36 @@ import { getUserData } from './firestoreUsers';
                 q = query(q, filter());
             }
 
-            const itemsSnapshot = await getDocs(q);
-            const items = [];
+            const paxSnapshot = await getDocs(q);
+            const pax = [];
 
-            itemsSnapshot.forEach((doc) => {
-                items.push({ id: idFieldHandler(doc), ...doc.data() });
+            paxSnapshot.forEach((doc) => {
+                pax.push({ id: idFieldHandler(doc), ...doc.data() });
             });
 
-            const lastVisibleDoc = itemsSnapshot.docs[itemsSnapshot.docs.length - 1];
-            return { items, lastDoc: lastVisibleDoc };
+            const lastVisibleDoc = paxSnapshot.docs[paxSnapshot.docs.length - 1];
+            return { pax, lastDoc: lastVisibleDoc };
         } catch (error) {
             throw error;
         }
     };
 
-    export const getCurrentUserItems = async (uid, lastDoc, pageSize) => {
-        return paginateItems(lastDoc, pageSize, () => where('giverid', '==', doc(firestore, 'users', uid)));
+    export const getCurrentUserPax = async (uid, lastDoc, pageSize) => {
+        return paginatePax(lastDoc, pageSize, () => where('giverid', '==', doc(firestore, 'users', uid)));
     };
 
-    export const getTotalItems = async () => {
+    export const getTotaPax = async () => {
 
-        const count = await getDocs(collection(firestore, 'items')).then((snapshot) => {
+        const count = await getDocs(collection(firestore, 'pax')).then((snapshot) => {
             return snapshot.size;
         }
         );
         return count;
     };
 
-    export const getCurrentUserItemQueues = async (uid, lastDoc, pageSize) => {
+    export const getCurrentUserPaxQueues = async (uid, lastDoc, pageSize) => {
         try {
-            const {items: takerDocs, lastDoc: newLastDoc} = await paginateItems(
+            const {pax: takerDocs, lastDoc: newLastDoc} = await paginatePax(
                 lastDoc,
                 pageSize,
                 () => where('takerId', '==', doc(firestore, 'users', uid)),
@@ -156,35 +156,35 @@ import { getUserData } from './firestoreUsers';
             );
 
             if (takerDocs.length === 0) {
-                return { items: [], lastDoc: null };
+                return { pax: [], lastDoc: null };
             }
 
-            const itemIds = takerDocs.map((ref) => ref.id);
-            const {items} = await paginateItems(
+            const paxIds = takerDocs.map((ref) => ref.id);
+            const {pax} = await paginatePax(
                 null,
-                itemIds.length,
-                () => where(documentId(), 'in', itemIds)
+                paxIds.length,
+                () => where(documentId(), 'in', paxIds)
             );
 
-            return { items, lastDoc: newLastDoc };
+            return { pax, lastDoc: newLastDoc };
         } catch (error) {
-            console.error('getCurrentUserItemQueues error:', error)
+            console.error('getCurrentUserPaxQueues error:', error)
             throw error;
         }
     }
 
-    export const getItemFromFirestore = async (itemId) => {
+    export const getPaxFromFirestore = async (paxId) => {
         try {
-            const itemRef = doc(firestore, 'items', itemId);
-            const itemSnapshot = await getDoc(itemRef);
+            const paxRef = doc(firestore, 'pax', paxId);
+            const paxSnapshot = await getDoc(paxmRef);
 
-            if (itemSnapshot.exists()) {
-            const itemData = itemSnapshot.data();
-            const itemId = itemSnapshot.id;
-            const giverRef = itemData.giverid;
-            const takersRef = collection(firestore, `items/${itemId}/takers`);
+            if (paxSnapshot.exists()) {
+            const paxData = paxSnapshot.data();
+            const paxId = paxSnapshot.id;
+            const giverRef = paxData.giverid;
+            const takersRef = collection(firestore, `pax/${paxId}/takers`);
 
-            return { itemId, ...itemData, giverRef, takersRef };
+            return { paxId, ...paxData, giverRef, takersRef };
             } else {
             return null;
             }
@@ -195,41 +195,41 @@ import { getUserData } from './firestoreUsers';
         }
     };
 
-    export const deleteItemFromFirestore = async (uid, itemId) => {
+    export const deletePaxFromFirestore = async (uid, paxId) => {
         try {
-            const itemRef = doc(firestore, 'items', itemId);
+            const paxRef = doc(firestore, 'pax', paxId);
 
-            if (!(await checkIfMyItem(uid, itemId))) {
+            if (!(await checkIfMyPax(uid, paxId))) {
                 console.error("Virhe: Et voi poistaa toisen tuotteita.");
                 throw new Error("Et voi poistaa toisten tuotteita.");
             }
 
-            await deleteSubcollection(itemRef, 'takers');
-            await deleteDoc(itemRef);
-            console.log(`UID: ${uid} poistanut: ${itemId}`);
+            await deleteSubcollection(paxRef, 'takers');
+            await deleteDoc(paxRef);
+            console.log(`UID: ${uid} poistanut: ${paxId}`);
 
         } catch (error) {
-            console.error('Virhe poistettaessa itemiä Firestoresta:', error);
+            console.error('Virhe poistettaessa paxiä Firestoresta:', error);
             throw error;
         }
       };
 
-    export const deleteExpiredItems = async () => {
+    export const deleteExpiredPax = async () => {
         try {
-            const itemsRef = collection(firestore, 'items');
-            const q = query(itemsRef, where('expiration', '<=', Timestamp.now()));
+            const paxRef = collection(firestore, 'pax');
+            const q = query(paxRef, where('expiration', '<=', Timestamp.now()));
             const snapshot = await getDocs(q);
 
             for (const docSnapshot of snapshot.docs) {
-                const itemId = docSnapshot.id;
+                const paxId = docSnapshot.id;
 
                 await deleteSubcollection(docSnapshot.ref, 'takers');
                 await deleteDoc(docSnapshot.ref);
-                console.log(`Poistettu vanhentunut itemi ja sen takers: ${itemId}`);
+                console.log(`Poistettu vanhentunut pax ja sen takers: ${paxId}`);
             }
 
         } catch (error) {
-            console.error('Virhe poistettaessa vanhentuneita itemeitä:', error);
+            console.error('Virhe poistettaessa vanhentuneita paxeja:', error);
             throw error;
         }
     }
@@ -249,22 +249,22 @@ import { getUserData } from './firestoreUsers';
         }
     }
 
-    export const checkIfMyItem = async (uid, itemId) => {
+    export const checkIfMyPax = async (uid, paxId) => {
         try {
-            const itemData = await getItemFromFirestore(itemId); 
-            const { giverRef } = itemData; 
+            const paxData = await getPaxFromFirestore(paxId); 
+            const { giverRef } = paxData; 
 
             return giverRef.id === uid;
         } catch (error) {
-            console.error("Error checking item ownership:", error);
+            console.error("Error checking pax permits:", error);
             return false;
         }
     };
 
-   export const fetchQueueCount = async (itemId) => {
+   export const fetchQueueCount = async (paxId) => {
         
         try {
-            const takersRef = collection(firestore, `items/${itemId}/takers`);
+            const takersRef = collection(firestore, `pax/${paxId}/takers`);
             const snapshot = await getDocs(takersRef);
             return snapshot.size -1;
         } catch (error) {
@@ -272,9 +272,9 @@ import { getUserData } from './firestoreUsers';
         }
       };
 
-      export const fetchFirstInQueue = async (itemId) => {
+      export const fetchFirstInQueue = async (paxId) => {
         try {
-            const takersRef = collection(firestore, `items/${itemId}/takers`);
+            const takersRef = collection(firestore, `pax/${paxId}/takers`);
             const snapshot = await getDocs(query(takersRef, orderBy('createdAt')));
 
             if (snapshot.empty) {

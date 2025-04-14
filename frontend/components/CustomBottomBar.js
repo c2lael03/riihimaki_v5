@@ -1,3 +1,5 @@
+// ./frontend/components/CustomBottomBar.js
+
 import React, { useState, useEffect, useContext } from 'react';
 import { View, TouchableOpacity, Image, Keyboard } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
@@ -5,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import globalStyles from '../assets/styles/Styles';
 import logo from '../assets/images/personchecked200.png';
 import { AuthenticationContext } from "../context/AuthenticationContext";
+import ScannerMain from '../screens/scanner/ScannerMain';
 
 const CustomBottomBar = () => {
   const navigation = useNavigation(); 
@@ -34,7 +37,7 @@ const CustomBottomBar = () => {
           <MaterialIcons name="home" size={40} color="#ffffff" onPress={() => { navigation.navigate('Home'); }}/>
         </TouchableOpacity>
 
-        <TouchableOpacity style={globalStyles.iconButton} onPress={() => { navigation.navigate('ItemsMain'); }}>
+        <TouchableOpacity style={globalStyles.iconButton} onPress={() => { navigation.navigate('ScannerMain'); }}>
           <Image source={logo} style={globalStyles.findItems} />
         </TouchableOpacity>
 

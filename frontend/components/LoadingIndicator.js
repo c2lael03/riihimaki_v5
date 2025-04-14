@@ -1,3 +1,5 @@
+// ./frontend/components/LoadingIndicator.js
+
 import { ActivityIndicator, View } from "react-native";
 import React from "react";
 
