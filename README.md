@@ -59,7 +59,7 @@ Yläreunan valikon kautta voi luoda omia ilmoituksia sekä tarkastella jo tehtyj
 
 Tilinhallintanäkymässä puolestaan voi hallita tiliä sekä kirjautua ulos sovelluksesta.
 
-| Kirjautumisnäkymä | Kotinäkymä | Kierrätystavaralistaus | Tilinhallintanäkymä |
+| Kirjautumisnäkymä | Kotinäkymä | Skannaustoiminnallisuus | Tilinhallintanäkymä |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | 
 
