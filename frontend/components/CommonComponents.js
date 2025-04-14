@@ -8,7 +8,8 @@ export const Heading = ({
   title, 
   fontSize = 24, 
   //backgroundColor = '#113859', 
-  backgroundColor = '#556B2F', // Tai '#556B2F', 'darkolivegreen'
+  //backgroundColor = '#556B2F', Tai '#556B2F', 'darkolivegreen', army green
+  backgroundColor = '#336666', // navy blue
   textColor = '#C9FFD9',
   onPress,
   style

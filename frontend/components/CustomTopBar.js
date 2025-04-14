@@ -45,13 +45,13 @@ const CustomTopBar = () => {
           >
             <Menu.Item onPress={() => navigateToScreen('Home')} title="Aloitus" />
             <Menu.Item onPress={() => navigateToScreen('AccountLoggedIn')} title="Tilin hallinta" />
-            <Menu.Item onPress={() => navigateToScreen('ItemsMain')} title="Julkaisut" />
+            <Menu.Item onPress={() => navigateToScreen('ScannerMain')} title="Skanneri" />
             <Menu.Item onPress={() => navigateToScreen('Credits')} title="Tietoa sovelluksesta" />
           </Menu>
 
           <Appbar.Content
             title="IDIS"
-            titleStyle={globalStyles.appBarTitle}
+            titleStyle={[globalStyles.appBarTitle, { fontFamily: 'Stencil', color: '#ffffff' }]} // Käytä stencil-fonttia tässä}
             style={globalStyles.appBarContainer}
           />
         </Appbar.Header>
@@ -62,8 +62,8 @@ const CustomTopBar = () => {
 
           <Image source={logo} style={globalStyles.logo} />
           <Appbar.Content
-            title="Kierttis"
-            titleStyle={globalStyles.appBarTitleAuthUndef}
+            title="IDIS"
+            titleStyle={[globalStyles.appBarTitleAuthUndef, { fontFamily: 'Stencil', color: '#ffffff' }]} // Käytä stencil-fonttia tässä
             style={globalStyles.appBarContainerAuthUndef}
           />
         </Appbar.Header>

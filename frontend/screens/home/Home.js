@@ -1,9 +1,11 @@
+// ./frontend/screens/home/Home.js
+
 import React, { useContext, useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthenticationContext";
 import { ScrollView, Text, View } from "react-native";
 import { Heading } from "../../components/CommonComponents";
-import AuthScreen from "../auth/AuthScreen";
-import globalStyles from "../../assets/styles/Styles";
+import AuthScreen from "../auth/AuthScreen.js";
+import globalStyles from "../../assets/styles/Styles.js";
 import { Image } from "react-native";
 
 const Home = () => {
@@ -20,14 +22,14 @@ const Home = () => {
     }, []);
 
     return (
-      <ScrollView contentContainerStyle={{ padding: 8 }}>
+      <ScrollView style={globalStyles.homeScreenContainer} contentContainerStyle={{ padding: 8 }}>
           {authState ? (
             <>
               <View style={globalStyles.separatorThin} />
-                <Text style={globalStyles.defText}>
+                <Text style={globalStyles.defText, globalStyles.whiteText}>
                   {`Olet kirjautunut käyttäjänä:`}
                 </Text>
-                <Text style={globalStyles.defTitle}>
+                <Text style={globalStyles.defTitle, globalStyles.whiteText}>
                   {`${authState.user.username}`}
                 </Text>
               <View style={globalStyles.separatorBold} />

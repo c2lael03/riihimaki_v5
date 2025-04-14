@@ -1,3 +1,5 @@
+// ./frontend/App.js
+
 import "react-native-url-polyfill/auto";
 import React from "react";
 import { View } from "react-native";
@@ -12,6 +14,7 @@ import globalStyles from "./assets/styles/Styles";
 import CustomTopBar from "./components/CustomTopBar";
 import CustomBottomBar from "./components/CustomBottomBar";
 import Home from "./screens/home/Home";
+import ScannerMain from "./screens/scanner/ScannerMain"; //lisätty
 import AccountMain from "./screens/account/AccountMain";
 import {
   AccountLoggedIn,
@@ -91,6 +94,11 @@ const AppNavigator = () => {
           <Stack.Screen
             name="Chat"
             component={ChatView}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ScannerMain"
+            component={ScannerMain}
             options={{ headerShown: false }}
           />
         </>

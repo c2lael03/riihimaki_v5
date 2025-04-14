@@ -1,3 +1,5 @@
+// ./frontend/hooks/useThreads.js
+
 import { useAuth } from "../context/AuthenticationContext";
 import { collection, doc, query, where } from "firebase/firestore";
 import { firestore } from "../services/firebaseConfig";

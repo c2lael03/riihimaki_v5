@@ -165,14 +165,18 @@ const globalStyles = StyleSheet.create({
   },
 
   appBar: {
-    //backgroundColor: "#0f3e5b",
-    backgroundColor: 'darkolivegreen',
+    // backgroundColor: "#0f3e5b", 
+    // backgroundColor: 'darkolivegreen', //army green
+     backgroundColor: '#336666', // navy blue
+    // backgroundColor: ' #006633', // vihreä
     height: 98,
   },
 
   appBarAuthUndef: {
     //backgroundColor: "#0f3e5b",
-    backgroundColor: 'darkolivegreen',
+    //backgroundColor: 'darkolivegreen', //army green
+    backgroundColor: '#336666', // navy blue
+
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',   
@@ -381,6 +385,67 @@ const globalStyles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#f0f0f0",
     marginVertical: 2,
+  },
+
+  navyBlueContainer: { // Lisää tämä tyyli
+    // backgroundColor: 'darkolivegreen', //army green
+    backgroundColor: '#336666', // navy blue
+    // backgroundColor: ' #006633', // vihreä
+    //backgroundColor: '#000080', // sininen
+    
+    
+    padding: 10, // Voit lisätä sisäistä tilaa
+    borderRadius: 10, // Pyöristetyt kulmat (säädä arvoa tarpeen mukaan)
+    //paddingVertical: 15, // Lisää pystysuuntaista sisäistä marginaalia
+    //paddingHorizontal: 20, // Lisää vaakasuuntaista sisäistä marginaalia
+    marginVertical: 8, // Lisää marginaalia buttonien väliin
+    alignItems: 'center', // Keskitä teksti vaakasuunnassa
+    justifyContent: 'center', // Keskitä teksti pystysuunnassa (jos buttonilla on kiinteä korkeus)
+    // Voit lisätä hienovaraisia varjoja (muista suorituskyky):
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+
+  whiteText: {
+    color: '#ffffff'
+  },
+
+  homeScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e",  // harmaa
+  },
+
+  accountScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e"
+  },
+
+  authScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e"
+  },
+
+  chatScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e"
+  },
+
+  creditsScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e"
+  },
+
+  itemsScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e"
+  },
+
+  messagesScreenContainer: { 
+    flex: 1,
+    backgroundColor: "#2c373e"
   },
 
 });

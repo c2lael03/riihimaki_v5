@@ -47,3 +47,5 @@ const CustomBottomBar = () => {
 };
 
 export default CustomBottomBar;
+
+//ItemsMain --> muutettu muotoon ScannerMain

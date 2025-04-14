@@ -1,8 +1,10 @@
+// ./frontend/screens/account/AccountComponents.js
+
 import React, { useContext } from "react";
 import { ScrollView, Text, View, TouchableOpacity, Alert } from "react-native";
 import { auth } from "../../services/firebaseConfig";
 import { Heading, BasicSection } from "../../components/CommonComponents";
-import { ButtonNavigate } from "../../components/Buttons";
+import { ButtonNavigate } from "../../components/Buttons.js";
 import {
   DeleteAccountOfThisUser,
   LogoutFromThisUser,
@@ -41,40 +43,27 @@ export const AccountLoggedIn = () => {
   }
 
   return (
-    <ScrollView contentContainerStyle={{ padding: 8 }}>
-      <Heading title="Käyttäjän omat" />
-      <View style={globalStyles.viewIcons}>
-        <View style={globalStyles.iconWithText}>
-          <IconChat onPress={() => navigation.navigate("MessagesMain")} />
-          <Text style={globalStyles.textWithIcon}>Keskustelut</Text>
-        </View>
-
-        <View style={globalStyles.iconWithText}>
-          <IconMyItemList onPress={() => navigation.navigate("MyItems")} />
-          <Text style={globalStyles.textWithIcon}>Ilmoitukset</Text>
-        </View>
-
-        <View style={globalStyles.iconWithText}>
-          <IconMyQueueList onPress={() => navigation.navigate("MyQueues")} />
-          <Text style={globalStyles.textWithIcon}>Varaukset</Text>
-        </View>
-      </View>
+    <ScrollView style={globalStyles.homeScreenContainer} contentContainerStyle={{ padding: 8 }}>
 
       <Heading title="Tilin hallinta" />
       <View style={globalStyles.viewIcons}>
-        <View style={globalStyles.iconWithText}>
-          <IconRemoveUser onPress={() => navigation.navigate('AccountMaintain')} />
-          <Text style={globalStyles.textWithIcon}>Poista tili</Text>
-        </View>
 
-        <View style={globalStyles.iconWithText}>
-          <IconRemoveUser onPress={() => navigation.navigate('AccountUsername')} />
-          <Text style={globalStyles.textWithIcon}>Vaihda käyttäjänimi</Text>
-        </View>
+      <View style={[globalStyles.viewIcons, { flexDirection: 'column', alignItems: 'stretch' }]}>
+        <TouchableOpacity style={globalStyles.navyBlueContainer} onPress={() => navigation.navigate('AccountMaintain')}>
+          <IconRemoveUser size={24} color={'#ffffff'} />
+          <Text style={globalStyles.whiteText}>Poista tili</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={globalStyles.navyBlueContainer} onPress={() => navigation.navigate('AccountUsername')}>
+          <IconRemoveUser size={24} color={'#ffffff'} />
+          <Text style={globalStyles.whiteText}>Vaihda käyttäjänimi</Text>
+        </TouchableOpacity>
 
-        <View style={globalStyles.iconWithText}>
-          <IconLogout onPress={handleLogout} />
-          <Text style={globalStyles.textWithIcon}>Kirjaudu ulos</Text>
+        <TouchableOpacity style={globalStyles.navyBlueContainer} onPress={handleLogout}>
+          <IconLogout size={24} color={'#ffffff'} />
+          <Text style={globalStyles.whiteText}>Kirjaudu ulos</Text>
+        </TouchableOpacity>
+
         </View>
       </View>
     </ScrollView>
