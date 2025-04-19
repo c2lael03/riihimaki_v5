@@ -1,4 +1,10 @@
 // ./frontend/App.js
+// käynnistä sovellus ja expo:
+// cd frontend
+// npm install
+// npx react-native link react-native-vector-icons
+// npx expo start
+//
 
 import "react-native-url-polyfill/auto";
 import React from "react";
