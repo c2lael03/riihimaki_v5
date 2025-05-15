@@ -77,6 +77,7 @@ git clone https://github.com/c2lael03/riihimaki_v0
 Projektin voi käynnistää paikallisesti valitsemassasi terminaalissa komennoilla:
 
 ```
+cd frontend
 npm install
 npm start
 ```
