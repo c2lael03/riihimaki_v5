@@ -70,7 +70,7 @@ Tilinhallintanäkymässä puolestaan voi hallita tiliä sekä kirjautua ulos sov
 Voit kloonata repositorion käyttämällä valitsemassasi terminaalissa komentoa:
 
 ```
-git clone https://github.com/c2lael03/riihimaki_v0
+git clone https://github.com/c2lael03/YrityslahtoinenSovellusprojekti
 ```
 
 ### Projektin käynnistäminen paikallisesti 
